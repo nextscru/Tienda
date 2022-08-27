@@ -1,4 +1,4 @@
-package com.co.udea.mintic.UdeaDemo.services;
+package modelo ;
 
 public class Empleado {
 public String nombre;
