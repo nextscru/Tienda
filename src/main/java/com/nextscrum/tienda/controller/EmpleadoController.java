@@ -1,8 +1,10 @@
 package com.nextscrum.tienda.controller;
 
 import com.nextscrum.tienda.modelo.Empleado;
-import com.nextscrum.tienda.servicies.serviserUser;
+import com.nextscrum.tienda.servicies.EmpleadoServicies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -11,9 +13,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/userh")
-public class ctrlUsuario extends serviserUser {
-    @Autowired(required = true)
-    private serviserUser usuarioService;
+public class EmpleadoController extends EmpleadoServicies {
+
+    /*
+    @Autowired
+    EmpleadoServicies usuarioService;
 
     @GetMapping(value = "/users")
     public ArrayList<Empleado> obtenerUsuarios(){

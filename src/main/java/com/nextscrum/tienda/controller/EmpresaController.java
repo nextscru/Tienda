@@ -1,28 +1,32 @@
 package com.nextscrum.tienda.controller;
 
-import com.nextscrum.tienda.modelo.Empleado;
 import com.nextscrum.tienda.modelo.Empresa;
-import com.nextscrum.tienda.modelo.MovimientoDinero;
-import com.nextscrum.tienda.modelo.Perfil;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.nextscrum.tienda.servicies.EmpresaServicies;
+import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 
 @RestController
-public class restController {
+public class EmpresaController {
+
+    @Autowired
+    EmpresaServicies empresaServicies;
+
     @GetMapping("/empresa")
-    public String crearEmpresa(){
-        Empresa miEmpresa = new Empresa(1234L,"NextScrum","12365","56589","kr 69 65 20",new ArrayList<Empleado>(),new ArrayList<MovimientoDinero>(), new Date(),new Date());
-        return miEmpresa.toString();
-        //return "has hecho una peticion get";
+    private List<Empresa> verEmpresa(){
+        return empresaServicies.verEmpresa();
     }
-    @GetMapping("/perfil")
-    public String crearPerfil(){
-        Perfil miPerfil = new Perfil("1235","imagen.jpg","3502356",new Empleado(),new Date(),new Date());
-        return miPerfil.toString();
+
+    @PostMapping("/empresa")
+    public void crearEmpresa(@RequestBody Empresa empresa){
+        empresaServicies.crearyeditarEmpresa(empresa);
+
+    }
+    @DeleteMapping("/empresa/{id}")
+    private void eliminarEmpresa(@PathVariable("id") Long id){
+        empresaServicies.eliminarEmpresa(id);
     }
 }

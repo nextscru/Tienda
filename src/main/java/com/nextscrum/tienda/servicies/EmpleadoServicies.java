@@ -2,22 +2,21 @@ package com.nextscrum.tienda.servicies;
 
 
 import com.nextscrum.tienda.modelo.Empleado;
-import com.nextscrum.tienda.repositories.repositorio;
+import com.nextscrum.tienda.repositories.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.*;
 
 import org.springframework.stereotype.Service;
 
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
 
-public class serviserUser {
-
+public class EmpleadoServicies {
+/*
     @Autowired(required = true)
-    private repositorio usuarioRepository;
+    EmpleadoRepository usuarioRepository;
 
     public ArrayList<Empleado> obtenerUsuarios(){
 
@@ -47,6 +46,6 @@ public class serviserUser {
             return false;
         }
     }
-
+*/
 
 }

@@ -38,7 +38,7 @@ public class Empleado {
     @JoinColumn(name= "empresa_id")
     private Empresa empresa;
 
-    @OneToMany(mappedBy = "empleado",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<MovimientoDinero> transacciones = new ArrayList<>();
 

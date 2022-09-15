@@ -1,7 +1,5 @@
 package com.nextscrum.tienda.modelo;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -21,8 +19,8 @@ public class MovimientoDinero {
     private float cantidad;
 
     @ManyToOne
-    @JoinColumn(name= "empleado_id")
-    private Perfil perfil;
+    @JoinColumn(name= "empleado_id", nullable = false)
+    private Empleado empleado;
 
     @ManyToOne
     @JoinColumn(name="empresa_id")
@@ -37,11 +35,11 @@ public class MovimientoDinero {
 
     }
 
-    public MovimientoDinero(Long id, String concepto, float cantidad, Perfil perfil, Empresa empresa, Date createdAt, Date updatedAt) {
+    public MovimientoDinero(Long id, String concepto, float cantidad, Empleado empleado, Empresa empresa, Date createdAt, Date updatedAt) {
         this.id = id;
         this.concepto = concepto;
         this.cantidad = cantidad;
-        this.perfil = perfil;
+        this.empleado = empleado;
         this.empresa = empresa;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -71,13 +69,6 @@ public class MovimientoDinero {
         this.cantidad = cantidad;
     }
 
-    public Perfil getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
-    }
 
     public Empresa getEmpresa() {
         return empresa;
@@ -109,7 +100,6 @@ public class MovimientoDinero {
                 "id=" + id +
                 ", concepto='" + concepto + '\'' +
                 ", cantidad=" + cantidad +
-                ", perfil=" + perfil +
                 ", empresa=" + empresa +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
